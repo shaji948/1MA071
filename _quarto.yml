@@ -3,10 +3,10 @@ project:
   output-dir: docs
   
 website:
-  title: "1MS900"
+  title: "1MS071"
   navbar:
     left:
-      - href: Bayes.qmd
+      - href: Statistik.qmd
         text: Home
       
 format:

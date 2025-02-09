@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1MS900 - Komplement till Slides i Statistik</title>
+<title>1MS071 - Komplement till Slides i Statistik</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">1MS900</span>
+    <span class="navbar-title">1MS071</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -143,7 +143,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./Bayes.qmd">
+    <a class="nav-link active" href="./Statistik.html" aria-current="page">
  <span class="menu-text">Home</span></a>
   </li>  
 </ul>
@@ -449,7 +449,7 @@ mean of x
 <pre><code>[1] -1.655076</code></pre>
 </div>
 </div>
-<p>Det innebär att ett t-värde som ligger mellan <span class="math inline">\(-1.655076\)</span> och Inf anses vara helt “normalt” om H0 är sann. Om t-värdet ligger utanför <span class="math inline">\((-1.655076, Inf)\)</span> anses våra data “konstiga” under H0. Det vill säga, om <span class="math inline">\(t\)</span> är stort tyder det på att H0 inte stämmer. I vårt exempel betyder “minst lika extremt” att den standardiserade differensen <span class="math inline">\(t = \frac{\bar{x} - 4000}{s / \sqrt{n}}\)</span> är större eller lika med <span class="math inline">\(t = -2.662\)</span>, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som <span class="math display">\[\begin{eqnarray}
+<p>Det innebär att ett t-värde som ligger mellan <span class="math inline">\(-1.655076\)</span> och Inf anses vara helt “normalt” om H0 är sann. Om t-värdet ligger utanför <span class="math inline">\((-1.655076, Inf)\)</span> anses våra data “konstiga” under H0. Det vill säga, om <span class="math inline">\(t\)</span> är stort tyder det på att H0 inte stämmer. I vårt exempel betyder “minst lika extremt” att den standardiserade differensen <span class="math inline">\(t = \frac{\bar{x} - 4000}{s / \sqrt{n}}\)</span> är mindre eller lika med <span class="math inline">\(t = -2.662\)</span>, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som <span class="math display">\[\begin{eqnarray}
 P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \leq -2.662 \right) &amp;
 \end{eqnarray}\]</span></p>
 <div class="cell">
