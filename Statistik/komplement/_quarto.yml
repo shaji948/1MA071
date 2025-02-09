@@ -1,6 +1,6 @@
 project:
   type: website
-  output-dir: Statistik/komplement/docs
+  output-dir: docs
   
 website:
   title: "1MS900"
