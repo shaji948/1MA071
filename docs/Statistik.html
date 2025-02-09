@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1MS900 - Komplement till Sides i Statistik</title>
+<title>1MS900 - Komplement till Slides i Statistik</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -169,6 +169,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul class="collapse">
   <li><a href="#h0-mu-3800-textgram-mot-h1-mu-neq-3800-textgram" id="toc-h0-mu-3800-textgram-mot-h1-mu-neq-3800-textgram" class="nav-link" data-scroll-target="#h0-mu-3800-textgram-mot-h1-mu-neq-3800-textgram"><span class="toc-section-number">2.1</span>  H0: <span class="math inline">\(\mu = 3800 \text{gram}\)</span> mot H1: <span class="math inline">\(\mu \neq 3800 \text{gram}\)</span></a></li>
   <li><a href="#h0-mu-leq-3800-textgram-mot-h1-mu-3800-textgram" id="toc-h0-mu-leq-3800-textgram-mot-h1-mu-3800-textgram" class="nav-link" data-scroll-target="#h0-mu-leq-3800-textgram-mot-h1-mu-3800-textgram"><span class="toc-section-number">2.2</span>  H0: <span class="math inline">\(\mu \leq 3800 \text{gram}\)</span> mot H1: <span class="math inline">\(\mu &gt; 3800 \text{gram}\)</span></a></li>
+  <li><a href="#h0-mu-geq-3800-textgram-mot-h1-mu-3800-textgram" id="toc-h0-mu-geq-3800-textgram-mot-h1-mu-3800-textgram" class="nav-link" data-scroll-target="#h0-mu-geq-3800-textgram-mot-h1-mu-3800-textgram"><span class="toc-section-number">2.3</span>  H0: <span class="math inline">\(\mu \geq 3800 \text{gram}\)</span> mot H1: <span class="math inline">\(\mu &lt; 3800 \text{gram}\)</span></a></li>
   </ul></li>
   </ul>
 </nav>
@@ -178,7 +179,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Komplement till Sides i Statistik</h1>
+<h1 class="title">Komplement till Slides i Statistik</h1>
 </div>
 
 
@@ -409,6 +410,65 @@ P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \geq -2.662 \right) &amp;
 <p>Vi kan även ser resultatet “sample estimates: mean of x 3700.662” från <code>t.test()</code>. Det betyder medelvärdet av våra data är 3700.662:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vikt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3700.662</code></pre>
+</div>
+</div>
+<p>Du får inte jämföra medelvärdet med konfidensintervallet för att bestämma om H0 stämmer. Värför det? Stickprovs medelvärde ligger alltid i konfidensintervallet! För att testa H0 använder vi det antagna värdet i H0, dvs 3800 i vårt exempel.</p>
+</section>
+<section id="h0-mu-geq-3800-textgram-mot-h1-mu-3800-textgram" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="h0-mu-geq-3800-textgram-mot-h1-mu-3800-textgram"><span class="header-section-number">2.3</span> H0: <span class="math inline">\(\mu \geq 3800 \text{gram}\)</span> mot H1: <span class="math inline">\(\mu &lt; 3800 \text{gram}\)</span></h2>
+<p>Nu ändrar vi H0 till ensidighypotesen H0: <span class="math inline">\(\mu \geq 3800 \text{gram}\)</span>. Den standardiserade differensen mellan medelvikt och 3800 gram är forfarande <span class="math display">\[\begin{eqnarray}
+t &amp; = &amp; \frac{\bar{x} - 3800}{s / \sqrt{n}}.
+\end{eqnarray}\]</span></p>
+<ul>
+<li>Om <span class="math inline">\(t\)</span> är mycket större än 0 innebär att vår data tyder på att medelvikten är större än 3800, den antagna värdet i H0.</li>
+<li>Om <span class="math inline">\(t\)</span> är mycket mindre än 0 innebär att vår data tyder på att medelvikten är mindre än 3800.</li>
+</ul>
+<p>När vi använder <code>t.test()</code> för att testa H0 mot H1 ovan får vi resultatet</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(vikt, <span class="at">mu =</span> <span class="dv">3800</span>, <span class="at">alternative =</span> <span class="st">"less"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  vikt
+t = -2.662, df = 150, p-value = 0.004308
+alternative hypothesis: true mean is less than 3800
+95 percent confidence interval:
+     -Inf 3762.426
+sample estimates:
+mean of x 
+ 3700.662 </code></pre>
+</div>
+</div>
+<p><span class="math inline">\(100(1 - \alpha)%\)</span> av alla studier skulle ge <span class="math inline">\(t &gt; t_{1 - \alpha}^{(n-1)}\)</span> om vi kan upprepa samma studie många gånger. I vårt exempel är frihetsgraderna 150 (eftersom vi har <span class="math inline">\(151\)</span> observationer) och <span class="math inline">\(t_{1 - \alpha}^{(n-1)} = -1.655076\)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qt</span>(<span class="at">p =</span> <span class="fl">0.05</span>, <span class="at">df =</span> <span class="dv">151</span> <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.655076</code></pre>
+</div>
+</div>
+<p>Det innebär att ett t-värde som ligger mellan <span class="math inline">\(-Inf\)</span> och <span class="math inline">\(1.655076\)</span> anses vara helt “normalt” om H0 är sann. Om t-värdet ligger utanför <span class="math inline">\((-Inf, 1.655076)\)</span> anses våra data “konstiga” under H0. Det vill säga, om <span class="math inline">\(t\)</span> är stort tyder det på att H0 inte stämmer. I vårt exempel betyder “minst lika extremt” att den standardiserade differensen <span class="math inline">\(t = \frac{\bar{x} - 4000}{s / \sqrt{n}}\)</span> är större eller lika med <span class="math inline">\(t = -2.662\)</span>, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som <span class="math display">\[\begin{eqnarray}
+P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \geq -2.662 \right) &amp;
+\end{eqnarray}\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="at">q =</span> <span class="sc">-</span><span class="fl">2.662</span>, <span class="at">df =</span> <span class="dv">151</span> <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9956926</code></pre>
+</div>
+</div>
+<p>P-värdet avviker lite eftersom R använder fler decimaler för <span class="math inline">\(t\)</span>.</p>
+<p>Jag kan rita täthetsfunktionen av t-fördelningen. P-värdet är egentligen den röda ytan under kurvan. Den blåa ytan motsvarar en “normal” standardiserade differens.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Statistik_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Från resultatet av <code>t.test()</code> står det att “95 percent confidence interval: 3626.926, 3774.398”. Det betyder att <span class="math inline">\(95\%\)</span> konfidensintervallet för medelviken <span class="math inline">\(\mu\)</span> är <span class="math inline">\(3626.926 &lt; \mu &lt; 3774.398\)</span>. Nullhypotesen är H0: <span class="math inline">\(\mu = 3800\)</span>. Om sådan <span class="math inline">\(3800\)</span> ingår i konfidensintevallet tyder på att H0 stämmer vid 5% signifikansnivå. Annars förkastar vi H0.</p>
+<p>Vi kan även ser resultatet “sample estimates: mean of x 3700.662” från <code>t.test()</code>. Det betyder medelvärdet av våra data är 3700.662:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vikt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3700.662</code></pre>
 </div>
