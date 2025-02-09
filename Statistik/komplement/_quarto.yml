@@ -1,0 +1,17 @@
+project:
+  type: website
+  output-dir: docs
+  
+website:
+  title: "1MS900"
+  navbar:
+    left:
+      - href: Bayes.qmd
+        text: Home
+      
+format:
+  html: 
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo       # Bootstrap theme (cosmo, minty, journal, etc.)
