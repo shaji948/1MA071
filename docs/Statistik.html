@@ -449,13 +449,13 @@ mean of x
 <pre><code>[1] -1.655076</code></pre>
 </div>
 </div>
-<p>Det innebär att ett t-värde som ligger mellan <span class="math inline">\(-Inf\)</span> och <span class="math inline">\(1.655076\)</span> anses vara helt “normalt” om H0 är sann. Om t-värdet ligger utanför <span class="math inline">\((-Inf, 1.655076)\)</span> anses våra data “konstiga” under H0. Det vill säga, om <span class="math inline">\(t\)</span> är stort tyder det på att H0 inte stämmer. I vårt exempel betyder “minst lika extremt” att den standardiserade differensen <span class="math inline">\(t = \frac{\bar{x} - 4000}{s / \sqrt{n}}\)</span> är större eller lika med <span class="math inline">\(t = -2.662\)</span>, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som <span class="math display">\[\begin{eqnarray}
+<p>Det innebär att ett t-värde som ligger mellan <span class="math inline">\(-1.655076\)</span> och Inf anses vara helt “normalt” om H0 är sann. Om t-värdet ligger utanför <span class="math inline">\((-1.655076, Inf)\)</span> anses våra data “konstiga” under H0. Det vill säga, om <span class="math inline">\(t\)</span> är stort tyder det på att H0 inte stämmer. I vårt exempel betyder “minst lika extremt” att den standardiserade differensen <span class="math inline">\(t = \frac{\bar{x} - 4000}{s / \sqrt{n}}\)</span> är större eller lika med <span class="math inline">\(t = -2.662\)</span>, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som <span class="math display">\[\begin{eqnarray}
 P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \geq -2.662 \right) &amp;
 \end{eqnarray}\]</span></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pt</span>(<span class="at">q =</span> <span class="sc">-</span><span class="fl">2.662</span>, <span class="at">df =</span> <span class="dv">151</span> <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> <span class="sc">-</span><span class="fl">2.662</span>, <span class="at">df =</span> <span class="dv">151</span> <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9956926</code></pre>
+<pre><code>[1] 0.004307377</code></pre>
 </div>
 </div>
 <p>P-värdet avviker lite eftersom R använder fler decimaler för <span class="math inline">\(t\)</span>.</p>
@@ -465,7 +465,7 @@ P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \geq -2.662 \right) &amp;
 <p><img src="Statistik_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-<p>Från resultatet av <code>t.test()</code> står det att “95 percent confidence interval: 3626.926, 3774.398”. Det betyder att <span class="math inline">\(95\%\)</span> konfidensintervallet för medelviken <span class="math inline">\(\mu\)</span> är <span class="math inline">\(3626.926 &lt; \mu &lt; 3774.398\)</span>. Nullhypotesen är H0: <span class="math inline">\(\mu = 3800\)</span>. Om sådan <span class="math inline">\(3800\)</span> ingår i konfidensintevallet tyder på att H0 stämmer vid 5% signifikansnivå. Annars förkastar vi H0.</p>
+<p>Från resultatet av <code>t.test()</code> står det att “95 percent confidence interval: -Inf 3762.426”. Det betyder att <span class="math inline">\(95\%\)</span> konfidensintervallet för medelviken <span class="math inline">\(\mu\)</span> är <span class="math inline">\(\mu &lt; 3762.426\)</span>. Nullhypotesen är H0: <span class="math inline">\(\mu = 3800\)</span>. Om sådan <span class="math inline">\(3800\)</span> ingår i konfidensintevallet tyder på att H0 stämmer vid 5% signifikansnivå. Annars förkastar vi H0.</p>
 <p>Vi kan även ser resultatet “sample estimates: mean of x 3700.662” från <code>t.test()</code>. Det betyder medelvärdet av våra data är 3700.662:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(vikt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
