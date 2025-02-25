@@ -137,7 +137,7 @@ $t = -2.662$ är den standardiserade skillnaden som vi kan beräkna från vår d
 qt(p = 1 - 0.05 / 2, df = 151 - 1)
 ```
 
-Det innebär att ett t-värde som ligger mellan $-1.975905$ och $1.975905$ anses vara helt "normalt" om H0 är sann. Om t-värdet ligger utanför $(-1.975905, 1.975905)$ anses vår data "konstiga" under H0. Det vill säga, om absolutbeloppet av $t$ är stort tyder det på att H0 inte stämmer. P-värdet defineras som sannolikheten att få ett resultat som är "minst lika extremt" som det observerade, om H0 är sann. I vårt exempel betyder "minst lika extremt" att absolutbeloppet av den standardiserade differensen $t = \frac{\bar{x} - 4000}{s / \sqrt{n}}$ är större eller lika med absolutebeloppet av $t = -2.662$, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som \begin{eqnarray}
+Det innebär att ett t-värde som ligger mellan $-1.975905$ och $1.975905$ anses vara helt "normalt" om H0 är sann. Om t-värdet ligger utanför $(-1.975905, 1.975905)$ anses vår data "konstiga" under H0. Det vill säga, om absolutbeloppet av $t$ är stort tyder det på att H0 inte stämmer. P-värdet defineras som sannolikheten att få ett resultat som är "minst lika extremt" som det observerade, om H0 är sann. I vårt exempel betyder "minst lika extremt" att absolutbeloppet av den standardiserade differensen $t = \frac{\bar{x} - 3800}{s / \sqrt{n}}$ är större eller lika med absolutebeloppet av $t = -2.662$, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som \begin{eqnarray}
 P\left( \left| \frac{\bar{x} - 3800}{s / \sqrt{n}} \right| \geq \left| -2.662 \right| \right) & = & P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \leq -2.662 \right) + P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \geq 2.662 \right)
 \end{eqnarray}
 
@@ -200,7 +200,7 @@ $100(1 - \alpha)%$ av alla studier skulle ge $t < t_{\alpha}^{(n-1)}$ om vi kan 
 qt(p = 1 - 0.05, df = 151 - 1)
 ```
 
-Det innebär att ett t-värde som ligger mellan $-Inf$ och $1.655076$ anses vara helt "normalt" om H0 är sann. Om t-värdet ligger utanför $(-Inf, 1.655076)$ anses våra data "konstiga" under H0. Det vill säga, om $t$ är stort tyder det på att H0 inte stämmer. I vårt exempel betyder "minst lika extremt" att den standardiserade differensen $t = \frac{\bar{x} - 4000}{s / \sqrt{n}}$ är större eller lika med $t = -2.662$, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som \begin{eqnarray}
+Det innebär att ett t-värde som ligger mellan $-Inf$ och $1.655076$ anses vara helt "normalt" om H0 är sann. Om t-värdet ligger utanför $(-Inf, 1.655076)$ anses våra data "konstiga" under H0. Det vill säga, om $t$ är stort tyder det på att H0 inte stämmer. I vårt exempel betyder "minst lika extremt" att den standardiserade differensen $t = \frac{\bar{x} - 3800}{s / \sqrt{n}}$ är större eller lika med $t = -2.662$, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som \begin{eqnarray}
 P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \geq -2.662 \right) &
 \end{eqnarray}
 
@@ -227,7 +227,7 @@ x <- c(-2.662, x)
 polygon(x = x, y = y, density = NULL, angle = 45, border = NULL, col = "red") 
 ```
 
-Från resultatet av `t.test()` står det att "95 percent confidence interval: 3638.899      Inf". Det betyder att $95\%$ konfidensintervallet för medelviken $\mu$ är $\mu > 3638.899$. Nullhypotesen är H0: $\mu = 3800$. Om sådan $3800$ ingår i konfidensintevallet tyder på att H0 stämmer vid 5% signifikansnivå. Annars förkastar vi H0.
+Från resultatet av `t.test()` står det att "95 percent confidence interval: 3638.899 Inf". Det betyder att $95\%$ konfidensintervallet för medelviken $\mu$ är $\mu > 3638.899$. Nullhypotesen är H0: $\mu = 3800$. Om sådan $3800$ ingår i konfidensintevallet tyder på att H0 stämmer vid 5% signifikansnivå. Annars förkastar vi H0.
 
 Vi kan även ser resultatet "sample estimates: mean of x 3700.662" från `t.test()`. Det betyder medelvärdet av våra data är 3700.662:
 
@@ -258,13 +258,14 @@ $100(1 - \alpha)%$ av alla studier skulle ge $t > t_{1 - \alpha}^{(n-1)}$ om vi 
 qt(p = 0.05, df = 151 - 1)
 ```
 
-Det innebär att ett t-värde som ligger mellan $-1.655076$ och Inf anses vara helt "normalt" om H0 är sann. Om t-värdet ligger utanför $(-1.655076, Inf)$ anses våra data "konstiga" under H0. Det vill säga, om $t$ är stort tyder det på att H0 inte stämmer. I vårt exempel betyder "minst lika extremt" att den standardiserade differensen $t = \frac{\bar{x} - 4000}{s / \sqrt{n}}$ är mindre eller lika med $t = -2.662$, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som \begin{eqnarray}
+Det innebär att ett t-värde som ligger mellan $-1.655076$ och Inf anses vara helt "normalt" om H0 är sann. Om t-värdet ligger utanför $(-1.655076, Inf)$ anses våra data "konstiga" under H0. Det vill säga, om $t$ är stort tyder det på att H0 inte stämmer. I vårt exempel betyder "minst lika extremt" att den standardiserade differensen $t = \frac{\bar{x} - 3800}{s / \sqrt{n}}$ är mindre eller lika med $t = -2.662$, t-värdet som vi beräknar från data. Därför beräknar vi p-värdet som \begin{eqnarray}
 P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \leq -2.662 \right) &
 \end{eqnarray}
 
 ```{r}
 pt(q = -2.662, df = 151 - 1)
 ```
+
 P-värdet avviker lite eftersom R använder fler decimaler för $t$.
 
 Jag kan rita täthetsfunktionen av t-fördelningen. P-värdet är egentligen den röda ytan under kurvan. Den blåa ytan motsvarar en "normal" standardiserade differens.
@@ -290,5 +291,5 @@ Vi kan även ser resultatet "sample estimates: mean of x 3700.662" från `t.test
 ```{r}
 mean(vikt)
 ```
-Du får inte jämföra medelvärdet med konfidensintervallet för att bestämma om H0 stämmer. Värför det? Stickprovs medelvärde ligger alltid i konfidensintervallet! För att testa H0 använder vi det antagna värdet i H0, dvs 3800 i vårt exempel.
 
+Du får inte jämföra medelvärdet med konfidensintervallet för att bestämma om H0 stämmer. Värför det? Stickprovs medelvärde ligger alltid i konfidensintervallet! För att testa H0 använder vi det antagna värdet i H0, dvs 3800 i vårt exempel.
