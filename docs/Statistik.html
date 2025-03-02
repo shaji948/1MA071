@@ -497,11 +497,24 @@ X\text{ och } Y \text{ har samma median}
 <li><span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> har olika medianer när vi förkastar H0.</li>
 </ul>
 <p>Men har de samma fördelning? Vi vet inte. Det kanske finns någon skillnad mellan <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span>, men de har samma median.</p>
-<p>Vad sägs om <span style="color: blue;">ensticksprovs Wilcoxon test</span> eller <span style="color: blue;">Wilcoxon test med stickprov i par</span>? De testar pseudomedian! Om <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> följer samma fördelning är pseudomedian medianen av fördelningen av <span class="math inline">\((X + Y) /2\)</span>. Till exempel, om <span class="math inline">\(X\)</span> följer exponetialfördelning med <span class="math inline">\(\lambda = 1\)</span> blir <span class="math inline">\(X+Y\)</span> <a href="https://sv.wikipedia.org/wiki/Gammaf%C3%B6rdelning">gamma-fördelade</a> (Gammafördelning ingår inte i kursen). Pseudomedian av <span class="math inline">\(X\)</span> är 0.8391735, medan medianen av <span class="math inline">\(X\)</span> är 0.6931472.</p>
-<p>Ser följande histogrammen symmetriska?</p>
+<p>Vad sägs om <span style="color: blue;">ensticksprovs Wilcoxon test</span> eller <span style="color: blue;">Wilcoxon test med stickprov i par</span>? De testar pseudomedian! Om <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> följer samma fördelning är pseudomedian medianen av fördelningen av <span class="math inline">\((X + Y) /2\)</span>. Till exempel, om <span class="math inline">\(X\)</span> följer exponetialfördelning med <span class="math inline">\(\lambda = 1\)</span> blir <span class="math inline">\(X+Y\)</span> <a href="https://sv.wikipedia.org/wiki/Gammaf%C3%B6rdelning">gamma-fördelade</a> (Gammafördelning ingår inte i kursen). Vi kan simulera en stor mängd data för att skatta pseudomedian och median. Vi simulerar <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> från <span class="math inline">\(\text{Exp}(1)\)</span>, och beräknar <span class="math inline">\(Z = (X + Y) /2\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">numeric</span>(<span class="fl">1e06</span>)</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span> <span class="sc">:</span> <span class="fl">1e06</span>){</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    y <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="at">n =</span> <span class="dv">1</span>, <span class="at">rate =</span> <span class="dv">1</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    z[i] <span class="ot">&lt;-</span> (x <span class="sc">+</span> y) <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Pseudomedianen är median av <span class="math inline">\(Z\)</span> som</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Pseudomedian av <span class="math inline">\(X \sim \text{Exp}(1)\)</span> är 0.8391735, medan medianen av <span class="math inline">\(X\sim \text{Exp}(1)\)</span> är 0.6931472.</p>
+<p>Nu vet vi att det är viktigt att fördelningen är symmetrisk. Ser följande histogrammen symmetriska?</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="Statistik_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+<p><img src="Statistik_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <ul>
