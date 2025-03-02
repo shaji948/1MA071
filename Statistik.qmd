@@ -293,3 +293,46 @@ mean(vikt)
 ```
 
 Du får inte jämföra medelvärdet med konfidensintervallet för att bestämma om H0 stämmer. Värför det? Stickprovs medelvärde ligger alltid i konfidensintervallet! För att testa H0 använder vi det antagna värdet i H0, dvs 3800 i vårt exempel.
+
+# Föreläsning 7
+Det är svårt att tolka vad `wilcox.test()` egentligen testar. Vi börjar med <span style="color: blue;">tvåsticksprovs Wilcoxon test (Mann-Whitney test)</span> som testar
+\begin{eqnarray}
+H_{0}:\quad & P\left(X>Y\right) = P\left(X<Y\right)\\
+H_{1}:\quad & P\left(X>Y\right) \neq P\left(X<Y\right)
+\end{eqnarray}
+
+- H0 stämmer om $X$ och $Y$ följer samma fördelning. Därför kan vi dra slutsatsen att det finns någon skillnad mellan fördelningarna av $X$ och $Y$ när vi förkastar H0. Men vi vet inte vad som orsakar sådan skillnad. 
+- Vilken slutsats kan vi dra om vi inte kan förkasta H0? Man kan säga att det inte finns någon tendens att $X$ tenderar vara större eller mindre än $Y$. Har de samma median? Vi vet inte.
+
+Nu antar vi att fördelningarna av $X$ och $Y$ är symmetriska. Då blir
+\begin{eqnarray}
+P\left(X>Y\right) = P\left(X<Y\right)
+\end{eqnarray}
+och
+\begin{eqnarray}
+X\text{ och } Y \text{ har samma median}
+\end{eqnarray} 
+samma! Som följd kan vi drar följande slutsatser.
+
+- $X$ och $Y$ har samma median när vi inte förkastar H0.
+- $X$ och $Y$ har olika medianer när vi förkastar H0.
+
+Men har de samma fördelning? Vi vet inte. Det kanske finns någon skillnad mellan $X$ och $Y$, men de har samma median.
+
+Vad sägs om <span style="color: blue;">ensticksprovs Wilcoxon test</span> eller <span style="color: blue;">Wilcoxon test med stickprov i par</span>? De testar pseudomedian! Om $X$ och $Y$ följer samma fördelning är pseudomedian medianen av fördelningen av $(X + Y) /2$. Till exempel, om $X$ följer exponetialfördelning med $\lambda = 1$ blir $X+Y$ [gamma-fördelade](https://sv.wikipedia.org/wiki/Gammaf%C3%B6rdelning) (Gammafördelning ingår inte i kursen). 
+Pseudomedian av $X$ är `r qgamma(p = 0.5, shape = 2, rate = 1) / 2`, medan medianen av $X$ är `r log(2)`.
+
+Ser följande histogrammen symmetriska?
+```{r, fig.height = 3, echo = FALSE}
+par(mfrow = c(1, 3))
+n <- 2000
+NB <- 20
+set.seed(12345)
+x <- rnorm(n, 1, 1); hist(x, breaks = NB)
+x <- rexp(n, rate = 1); hist(x, breaks = NB)
+x <- rgamma(n, shape = 5, rate = 2); hist(x, breaks = NB)
+```
+
+- Histogrammet till vänster ser hyfsat symmetriskt ut. 
+- Histogrammet i mitten ser inte symmetriskt ut. 
+- Histogrammet till höger ser inte symmetriskt ut. 

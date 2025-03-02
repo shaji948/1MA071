@@ -171,6 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li><a href="#h0-mu-leq-3800-textgram-mot-h1-mu-3800-textgram" id="toc-h0-mu-leq-3800-textgram-mot-h1-mu-3800-textgram" class="nav-link" data-scroll-target="#h0-mu-leq-3800-textgram-mot-h1-mu-3800-textgram"><span class="toc-section-number">2.2</span>  H0: <span class="math inline">\(\mu \leq 3800 \text{gram}\)</span> mot H1: <span class="math inline">\(\mu &gt; 3800 \text{gram}\)</span></a></li>
   <li><a href="#h0-mu-geq-3800-textgram-mot-h1-mu-3800-textgram" id="toc-h0-mu-geq-3800-textgram-mot-h1-mu-3800-textgram" class="nav-link" data-scroll-target="#h0-mu-geq-3800-textgram-mot-h1-mu-3800-textgram"><span class="toc-section-number">2.3</span>  H0: <span class="math inline">\(\mu \geq 3800 \text{gram}\)</span> mot H1: <span class="math inline">\(\mu &lt; 3800 \text{gram}\)</span></a></li>
   </ul></li>
+  <li><a href="#föreläsning-7" id="toc-föreläsning-7" class="nav-link" data-scroll-target="#föreläsning-7"><span class="toc-section-number">3</span>  Föreläsning 7</a></li>
   </ul>
 </nav>
     </div>
@@ -474,9 +475,42 @@ P\left( \frac{\bar{x} - 3800}{s / \sqrt{n}} \leq -2.662 \right) &amp;
 </div>
 </div>
 <p>Du får inte jämföra medelvärdet med konfidensintervallet för att bestämma om H0 stämmer. Värför det? Stickprovs medelvärde ligger alltid i konfidensintervallet! För att testa H0 använder vi det antagna värdet i H0, dvs 3800 i vårt exempel.</p>
-
-
 </section>
+</section>
+<section id="föreläsning-7" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Föreläsning 7</h1>
+<p>Det är svårt att tolka vad <code>wilcox.test()</code> egentligen testar. Vi börjar med <span style="color: blue;">tvåsticksprovs Wilcoxon test (Mann-Whitney test)</span> som testar <span class="math display">\[\begin{eqnarray}
+H_{0}:\quad &amp; P\left(X&gt;Y\right) = P\left(X&lt;Y\right)\\
+H_{1}:\quad &amp; P\left(X&gt;Y\right) \neq P\left(X&lt;Y\right)
+\end{eqnarray}\]</span></p>
+<ul>
+<li>H0 stämmer om <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> följer samma fördelning. Därför kan vi dra slutsatsen att det finns någon skillnad mellan fördelningarna av <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> när vi förkastar H0. Men vi vet inte vad som orsakar sådan skillnad.</li>
+<li>Vilken slutsats kan vi dra om vi inte kan förkasta H0? Man kan säga att det inte finns någon tendens att <span class="math inline">\(X\)</span> tenderar vara större eller mindre än <span class="math inline">\(Y\)</span>. Har de samma median? Vi vet inte.</li>
+</ul>
+<p>Nu antar vi att fördelningarna av <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> är symmetriska. Då blir <span class="math display">\[\begin{eqnarray}
+P\left(X&gt;Y\right) = P\left(X&lt;Y\right)
+\end{eqnarray}\]</span> och <span class="math display">\[\begin{eqnarray}
+X\text{ och } Y \text{ har samma median}
+\end{eqnarray}\]</span> samma! Som följd kan vi drar följande slutsatser.</p>
+<ul>
+<li><span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> har samma median när vi inte förkastar H0.</li>
+<li><span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> har olika medianer när vi förkastar H0.</li>
+</ul>
+<p>Men har de samma fördelning? Vi vet inte. Det kanske finns någon skillnad mellan <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span>, men de har samma median.</p>
+<p>Vad sägs om <span style="color: blue;">ensticksprovs Wilcoxon test</span> eller <span style="color: blue;">Wilcoxon test med stickprov i par</span>? De testar pseudomedian! Om <span class="math inline">\(X\)</span> och <span class="math inline">\(Y\)</span> följer samma fördelning är pseudomedian medianen av fördelningen av <span class="math inline">\((X + Y) /2\)</span>. Till exempel, om <span class="math inline">\(X\)</span> följer exponetialfördelning med <span class="math inline">\(\lambda = 1\)</span> blir <span class="math inline">\(X+Y\)</span> <a href="https://sv.wikipedia.org/wiki/Gammaf%C3%B6rdelning">gamma-fördelade</a> (Gammafördelning ingår inte i kursen). Pseudomedian av <span class="math inline">\(X\)</span> är 0.8391735, medan medianen av <span class="math inline">\(X\)</span> är 0.6931472.</p>
+<p>Ser följande histogrammen symmetriska?</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="Statistik_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<ul>
+<li>Histogrammet till vänster ser hyfsat symmetriskt ut.</li>
+<li>Histogrammet i mitten ser inte symmetriskt ut.</li>
+<li>Histogrammet till höger ser inte symmetriskt ut.</li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->
